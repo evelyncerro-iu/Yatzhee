@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yahtzee - Simulación Montecarlo</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1>🎲 Yahtzee Montecarlo</h1>
+      </header>
+
+      <main>
+        <!-- Sección 1: Juego interactivo -->
+        <section id="juego" class="active-section">
+          <div class="glass-panel">
+            <div class="game-layout">
+              <!-- Puntuación Jugador 1 -->
+              <div class="scorecard" id="scorecard-0">
+                <h3>Jugador 1</h3>
+                <div class="scores-list" id="scores-0"></div>
+                <div class="score-row">
+                  <span>Total:</span>
+                  <span class="score-value total-score" id="total-0">0</span>
+                </div>
+              </div>
+
+              <!-- Tablero Central -->
+              <div class="center-board">
+                <div class="info-text" id="game-status">
+                  Turno del Jugador 1 - Lanzamiento 1
+                </div>
+
+                <div class="dice-container" id="dice-container">
+                  <div class="die" data-index="0">1</div>
+                  <div class="die" data-index="1">2</div>
+                  <div class="die" data-index="2">3</div>
+                  <div class="die" data-index="3">4</div>
+                  <div class="die" data-index="4">5</div>
+                </div>
+
+                <div class="game-controls">
+                  <button
+                    id="btn-roll"
+                    class="btn-primary"
+                    style="font-size: 1.2rem; padding: 1rem 2rem"
+                  >
+                    Lanzar Dados (3 restantes)
+                  </button>
+                  <button id="btn-suggest" class="btn-secondary">
+                    Sugerencia IA (Montecarlo)
+                  </button>
+                  <button id="btn-demo" style="background: var(--warning); color: #000; font-weight: bold;">
+                    Auto-Jugar (Demo Rápida)
+                  </button>
+                  <button id="btn-reset" style="margin-top: 1rem">
+                    Reiniciar Partida
+                  </button>
+                </div>
+
+                <div class="log-container" id="game-log" style="width: 100%">
+                  Bienvenido a Yahtzee. Empieza el Jugador 1.
+                </div>
+              </div>
+
+              <!-- Puntuación Jugador 2 -->
+              <div class="scorecard" id="scorecard-1">
+                <h3>Jugador 2</h3>
+                <div class="scores-list" id="scores-1"></div>
+                <div class="score-row">
+                  <span>Total:</span>
+                  <span class="score-value total-score" id="total-1">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+      </main>
+    </div>
+
+    <!-- Winner Overlay -->
+    <div id="winner-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+        <div style="background: rgba(30, 41, 59, 0.9); padding: 3rem; border-radius: 16px; border: 2px solid #3b82f6; text-align: center; box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; color: #fff;" id="winner-title">¡Jugador X Gana!</h1>
+            <p style="font-size: 1.5rem; color: #94a3b8; margin-bottom: 2rem;" id="winner-score">0 vs 0 puntos</p>
+            <button class="btn-primary" style="font-size: 1.2rem;" onclick="document.getElementById('winner-overlay').style.display='none'; document.getElementById('btn-reset').click();">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
